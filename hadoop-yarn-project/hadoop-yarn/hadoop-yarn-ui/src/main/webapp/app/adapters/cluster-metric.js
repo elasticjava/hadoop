@@ -23,8 +23,9 @@ export default DS.JSONAPIAdapter.extend({
   headers: {
     Accept: 'application/json'
   },
-  host: 'http://localhost:1337/' + Config.RM_HOST + ':' + Config.RM_PORT, // configurable
-  namespace: 'ws/v1/cluster/metrics', // common const
+  host: Config.envDefaults.protocolScheme + Config.envDefaults.localBaseUrl + Config.envDefaults.rmWebUrl ,
+  namespace: Config.restNamespace.metrics,
+
   pathForType(modelName) {
     return ''; // move to some common place, return path by modelname.
   },

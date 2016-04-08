@@ -19,6 +19,7 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 import Converter from 'yarn-ui/utils/converter';
+import Config from 'yarn-ui/config';
 
 /**
  * REST URL's response when fetching container logs will be
@@ -28,8 +29,8 @@ export default DS.RESTAdapter.extend({
   headers: {
     Accept: 'text/plain'
   },
-  host: 'http://localhost:1337/',
-  namespace: 'ws/v1/node',
+  host: Config.envDefaults.protocolScheme + Config.envDefaults.localBaseUrl,
+  namespace: Config.restNamespace.node,
 
   urlForFindRecord(id, modelName, snapshot) {
     var splits = Converter.splitForContainerLogs(id);

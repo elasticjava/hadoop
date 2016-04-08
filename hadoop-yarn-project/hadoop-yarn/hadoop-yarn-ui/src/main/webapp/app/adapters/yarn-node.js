@@ -17,13 +17,14 @@
  */
 
 import DS from 'ember-data';
+import Config from 'yarn-ui/config';
 
 export default DS.JSONAPIAdapter.extend({
   headers: {
     Accept: 'application/json'
   },
-  host: 'http://localhost:1337/',
-  namespace: 'ws/v1/node',
+  host: Config.envDefaults.protocolScheme + Config.envDefaults.localBaseUrl,
+  namespace: Config.restNamespace.node,
 
   urlForFindRecord(id, modelName, snapshot) {
     this.host = this.host + id;

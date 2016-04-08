@@ -24,8 +24,8 @@ export default DS.JSONAPIAdapter.extend({
   headers: {
     Accept: 'application/json'
   },
-  host: 'http://localhost:1337/' + Config.RM_HOST + ':' + Config.RM_PORT, // configurable
-  namespace: 'ws/v1/cluster', // common const
+  host: Config.envDefaults.protocolScheme + Config.envDefaults.localBaseUrl + Config.envDefaults.rmWebUrl ,
+  namespace: Config.restNamespace.cluster,
 
   urlForQuery(query, modelName) {
     var url = this._buildURL();

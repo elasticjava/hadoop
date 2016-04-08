@@ -24,13 +24,14 @@ export default DS.JSONAPIAdapter.extend({
   headers: {
     Accept: 'application/json'
   },
-  rmHost: 'http://localhost:1337/' + Config.RM_HOST + ':' + Config.RM_PORT,
-  tsHost: 'http://localhost:1337/' + Config.TS_HOST + ':' + Config.TS_PORT,
+  rmHost: Config.envDefaults.protocolScheme + Config.envDefaults.localBaseUrl + Config.envDefaults.rmWebUrl,
+  tsHost: Config.envDefaults.protocolScheme + Config.envDefaults.localBaseUrl + Config.envDefaults.timelineWebUrl,
+
   host: function() {
     return undefined
   }.property(),
-  rmNamespace: 'ws/v1/cluster',
-  tsNamespace: 'ws/v1/applicationhistory',
+  rmNamespace: Config.restNamespace.cluster,
+  tsNamespace: Config.restNamespace.timeline,
   namespace: function() {
     return undefined
   }.property(),

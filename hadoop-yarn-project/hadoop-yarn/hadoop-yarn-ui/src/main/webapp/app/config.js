@@ -19,9 +19,36 @@
 /**
  * Host and port configurations
  */
+
 export default {
-  RM_HOST: 'localhost',
-  RM_PORT: '8088',
-  TS_HOST: 'localhost',
-  TS_PORT: '8188',
+    envDefaults: {
+
+    /*
+     * Local URL. This can be empty by default. For testbed if corsproxy is used,
+     * corsproxy URL can be configured here. For eg:"localhost:1337/"
+     */
+      localBaseUrl: "localhost:1337/",
+
+    /*
+     * Timeline web interface can be configured below.
+     */
+      timelineWebUrl: "localhost:8188",
+
+    /*
+     * RM web interface can be configured below.
+     */
+      rmWebUrl: "localhost:8088",
+
+    /*
+     * Protocol scheme. It can be "http://" or "https://". By default, http is used.
+     */
+      protocolScheme: "http://"
+   },
+
+    restNamespace: {
+      timeline: 'ws/v1/applicationhistory',
+      cluster: 'ws/v1/cluster',
+      metrics: 'ws/v1/cluster/metrics',
+      node: 'ws/v1/node'
+   }
 };
